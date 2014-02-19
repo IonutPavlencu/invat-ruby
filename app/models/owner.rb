@@ -3,16 +3,16 @@ class Owner
 	def nume
 		nume = 'Ionut Pavlencu'
 	end
-	#def datanastere
-	#	datanastere = Date.new(1986,09,07)
-	#end
-	#def ziler
-	#	azi = Date.today.to_i
-	#	zina = Date.new(today.year, datanastere.month, datanastere.day).to_i
-	#	if zina > azi
-	#		ziler = (zina - azi)
-	#	else
-	#		ziler = (datanastere.next_year - azi)
-	#	end
-	#end
+	def datanastere
+		datanastere = Date.new(1986, 9, 7)
+	end
+	def ziler
+		azi = Date.today
+		zina = Date.new(azi.year, datanastere.month, datanastere.day)
+		if zina > azi
+			ziler = (zina - azi).to_i
+		else
+			ziler = (datanastere.next_year - azi).to_i
+		end
+	end
 end
