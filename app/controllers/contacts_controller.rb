@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
 		@contact = Contact.new(secure_params)
 			if @contact.valid?
 				@contact.update_spreadsheet
+				UserMailer.contact_email(@contact).deliver
 				flash[:notice] = "Mesaj primit de la #{@contact.name}."
 				redirect_to root_path
 			else
