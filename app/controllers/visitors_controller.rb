@@ -1,11 +1,25 @@
 class VisitorsController < ApplicationController
+	
 	def new
-
-		@owner = Owner.new
-		#render 'visitors/new'
-		#flash.now[:notice] = "Bine ai venit!!!"
-		#flash.now[:alert] = "Pana la ziua mea mai sunt #{@owner.ziler} zile!!!"
+		@visitor = Visitor.new
 	end
-	
-	
+
+	def create
+		@visitor = Visitor.new(secure_params)
+		if @visitor.valid?
+			@visitor.subscribe
+			flash[:notice] = "Ai fost inscrisi la newsletter cu adresa de email #{@visitor.email}."
+			redirect_to root_path
+		else
+			render :new
+		end
+	end
+
+		private
+
+		def secure_params
+			params.require(:visitor).permit(:email)
+			
+		end
+		
 end

@@ -1,4 +1,23 @@
-<h3> Acasa</h3>
-<p>Bine ati venit pe pagina lui <%= @owner.nume %></p>
-<p> Ziua lui este in data de : <%= @owner.datanastere%>.</p>
-<p> Pana la ziua lui mai sunt <%= @owner.ziler %> zile</p>
+<% content_for :title do %>Ionut Pavlencu<% end %>
+<% content_for :description do %>Pagina lui Ionut<% end %>
+<section><center>
+	<%= image_tag "poza1.jpg", size: "150x15" %> 
+	
+</section>
+<section>
+	<div class="column">
+		<h2>Fii la curent.</h2>
+	</div>
+	<div class="column">
+		<div class="form-centered">
+			<%= simple_form_for @visitor do |f| %>
+			<%= f.error_notification %>
+			<%= f.input :email, lavel: false, :placeholder => 'Adresa ta de email...' %>
+			<%= f.button :submit, "Aboneaza-te la newsletter", :class => "submit" %>
+			<% end %>
+			
+		</div>
+		
+	</div>
+</section>
+</center>
